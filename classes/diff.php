@@ -45,6 +45,20 @@ class Diff {
 				}
 			}
 		}
+		foreach ($to as $table => $data) {
+			// if table not exist
+			if (!array_key_exists($table, $from)) {
+				$sql .= "DROP TABLE ".$table.';';
+			} else {
+				$toColumns = $to[$table]["columns"];
+				foreach ($data["columns"] as $key => $value) {
+					// if columns not exist
+					if (!array_key_exists($key, $toColumns)){
+						$sql .= "ALTER TABLE ".$table. " DROP COLUMN ".$value["Field"].';';
+					}
+				}
+			}
+		}
 		return $sql;
 	}
 
