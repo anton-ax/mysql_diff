@@ -8,7 +8,7 @@ spl_autoload_register(function ($className) {
 
 $params = array(
     ''    => 'help',
-    'а:'  => 'from:',
+    'f:'  => 'from:',
     't:'  => 'to:',
     'a:'  => 'alter:',
 );
